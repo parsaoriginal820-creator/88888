@@ -3,42 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فال حافظ شیرازی - با نیت پاک</title>
+    <title>فال حافظ زیر آسمان شب</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Niconne&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎴</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&family=Niconne&display=swap" rel="stylesheet">
 </head>
 <body>
-    <canvas id="particles"></canvas>
-    
-    <div class="sound-btn" id="soundBtn">🔊</div>
-    <audio id="bgMusic" loop>
+
+    <div class="clouds">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+    </div>
+
+    <div class="moon"></div>
+    <div class="stars" id="stars"></div>
+
+    <div class="sound-btn" id="soundBtn">Speaker On</div>
+    <audio id="bgMusic" loop preload="auto">
         <source src="https://cdn.musicgitar.ir/Music/Nature/Rain/Rain%20Sounds~Guiatramusics.com%20-%20Rain%20Sounds%20-%20Spa.mp3" type="audio/mpeg">
     </audio>
 
+    <div class="month-bg" id="monthName">آذر</div>
+
     <div class="container">
-        <div class="header">
-            <h1 class="title">فال حافظ شیرازی</h1>
-            <p class="subtitle">با نیت پاک و دل روشن فال بگیرید</p>
+        <h1 class="title">فال حافظ شیرازی</h1>
+        <p class="subtitle">با نیت پاک در دل شب فال بگیرید</p>
+
+        <div class="analog-clock">
+            <div class="clock-face">
+                <div class="numbers">
+                    <span>۱۲</span><span>۱</span><span>۲</span><span>۳</span>
+                    <span>۴</span><span>۵</span><span>۶</span><span>۷</span>
+                    <span>۸</span><span>۹</span><span>۱۰</span><span>۱۱</span>
+                </div>
+                <div class="hand hour-hand" id="hour"></div>
+                <div class="hand minute-hand" id="minute"></div>
+                <div class="hand second-hand" id="second"></div>
+                <div class="center-dot"></div>
+            </div>
         </div>
 
-        <div class="clock-section">
-            <div id="clock">۰۰:۰۰:۰۰</div>
-            <div id="date">در حال بارگذاری...</div>
+        <div class="timeir-calendar">
+            <div class="header">
+                <span id="jalaliMonthYear"></span>
+                <span id="miladiDate"></span>
+            </div>
+            <table id="calendarTable">
+                <thead>
+                    <tr><th>ش</th><th>ی</th><th>د</th><th>س</th><th>چ</th><th>پ</th><th>ج</th></tr>
+                </thead>
+                <tbody id="calendarBody"></tbody>
+            </table>
+            <div class="events" id="eventsToday"></div>
         </div>
 
-        <button id="get-fal" class="magic-btn">
-            <span>بگیر فال</span>
-            <div class="ripple"></div>
+        <button id="get-fal" class="magic-btn-new">
+            <span>بگیر <span class="shine">ف</span>ال</span>
         </button>
 
         <div id="fal-result" class="card">
-            <div class="poem typing"></div>
+            <div class="poem"></div>
             <div class="taavil"></div>
         </div>
     </div>
 
-    <!-- دیگه نیازی به jalaali-js نیست! -->
     <script src="script.js"></script>
 </body>
 </html>

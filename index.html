@@ -3,26 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فال حافظ | ساعت و تقویم شمسی</title>
+    <title>فال حافظ شیرازی - با نیت پاک</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Niconne&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎴</text></svg>">
 </head>
 <body>
+    <canvas id="particles"></canvas>
+    
+    <div class="sound-btn" id="soundBtn">🔊</div>
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2023/03/23/audio_1c8f8b7f8e.mp3?filename=persian-traditional-music-11898.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="container">
-        <!-- ساعت و تقویم -->
-        <div class="clock-section">
-            <div id="clock">۰۰:۰۰:۰۰</div>
-            <div id="date">شنبه، ۱ مهر ۱۴۰۴</div>
+        <div class="header">
+            <h1 class="title">فال حافظ شیرازی</h1>
+            <p class="subtitle">با نیت پاک و دل روشن فال بگیرید</p>
         </div>
 
-        <!-- فال حافظ -->
-        <div class="fal-section">
-            <h1>فال حافظ</h1>
-            <button id="get-fal">بگیر فال</button>
-            <div id="fal-result" class="fal-hidden">
-                <div class="poem"></div>
-                <div class="taavil"></div>
-            </div>
+        <div class="clock-section">
+            <div id="clock">۰۰:۰۰:۰۰</div>
+            <div id="date">در حال بارگذاری...</div>
+        </div>
+
+        <button id="get-fal" class="magic-btn">
+            <span>بگیر فال</span>
+            <div class="ripple"></div>
+        </button>
+
+        <div id="fal-result" class="card">
+            <div class="poem typing"></div>
+            <div class="taavil"></div>
         </div>
     </div>
 

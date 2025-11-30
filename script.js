@@ -1,6 +1,6 @@
 // ==================== تبدیل میلادی به شمسی ====================
 function gregorianToJalali(gy, gm, gd) {
-    let jy = gy - 621;
+    let jy
     let gy2 = gm > 2 ? gy + 1 : gy;
     let days = 365 * gy + Math.floor((gy2 + 3) / 4) - Math.floor((gy2 + 99) / 100) + Math.floor((gy2 + 399) / 400) - 80 + gd +
                [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334][gm - 1];

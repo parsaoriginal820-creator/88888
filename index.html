@@ -1,13 +1,39 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فال حافظ زیر آسمان شب</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&family=Niconne&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Vazirmatn',sans-serif;background:linear-gradient(135deg,#0b0c1f,#1a1a2e,#16213e);color:#fff;min-height:100vh;overflow:hidden;position:relative}
+        .clouds{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
+        .cloud{position:absolute;background:rgba(255,255,255,0.07);border-radius:100px;filter:blur(10px)}
+        .cloud1{width:300px;height:100px;top:10%;left:-300px;animation:c 120s linear infinite}
+        .cloud2{width:400px;height:120px;top:25%;left:-400px;animation:c 180s linear infinite}
+        .cloud3{width:250px;height:80px;top:40%;left:-250px;animation:c 140s linear infinite}
+        @keyframes c{0%{left:-400px}100%{left:100%}}
+        .moon{position:fixed;top:50px;right:50px;width:150px;height:150px;background:radial-gradient(circle at 30% 30%,#fff,#f0f4f8);border-radius:50%;box-shadow:0 0 120px #fff;z-index:2}
+        .stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1}
+        .star{position:absolute;background:#fff;border-radius:50%;animation:t 4s infinite alternate}
+        @keyframes t{0%{opacity:0.3}100%{opacity:1}}
+        .title{font-size:3.5rem;text-align:center;margin:40px 0 10px;font-family:'Niconne',cursive;color:#ffd700;text-shadow:0 0 20px #ffd700}
+        .subtitle{text-align:center;font-size:1.4rem;margin-bottom:40px;opacity:0.9}
+        button#get-fal{display:block;margin:60px auto;padding:25px 100px;font-size:2.8rem;background:#000;color:#fff;border:5px solid #333;border-radius:80px;cursor:pointer;box-shadow:0 0 60px rgba(255,215,0,0.5)}
+        button#get-fal span.shine{color:#ffd700;text-shadow:0 0 30px #ffd700;animation:s 2s infinite}
+        @keyframes s{0%{text-shadow:0 0 20px #ffd700}100%{text-shadow:0 0 60px #ff6b6b,0 0 100px #fff}}
+        #fal-result{background:rgba(0,0,0,0.7);padding:50px;border-radius:30px;max-width:90%;margin:40px auto;text-align:center;font-size:2rem;line-height:3.5rem;display:none;box-shadow:0 0 80px rgba(255,215,0,0.4)}
+        .poem{margin-bottom:40px}
+        .taavil{color:#ff6b6b;font-size:1.8rem;margin-top:30px}
+        @media(max-width:600px){
+            .title{font-size:2.5rem}
+            button#get-fal{font-size:2rem;padding:20px 60px}
+        }
+    </style>
 </head>
 <body>
+
     <div class="clouds">
         <div class="cloud cloud1"></div>
         <div class="cloud cloud2"></div>
@@ -15,42 +41,54 @@
     </div>
     <div class="moon"></div>
     <div class="stars" id="stars"></div>
-    <div class="sound-btn" id="soundBtn">🔊</div>
-    <audio id="bgMusic" loop>
-        <source src="https://cdn.musicgitar.ir/Music/Nature/Rain/Rain%20Sounds~Guiatramusics.com%20-%20Rain%20Sounds%20-%20Spa.mp3" type="audio/mpeg">
-    </audio>
-    <div class="month-bg" id="monthName">آذر</div>
-    <div class="container">
-        <h1 class="title">فال حافظ شیرازی</h1>
-        <p class="subtitle">با نیت پاک در دل شب فال بگیرید</p>
-        <div class="analog-clock">
-            <div class="clock-face">
-                <div class="numbers">
-                    <span>۱۲</span><span>۱</span><span>۲</span><span>۳</span><span>۴</span><span>۵</span><span>۶</span><span>۷</span><span>۸</span><span>۹</span><span>۱۰</span><span>۱۱</span>
-                </div>
-                <div class="hand hour-hand" id="hour"></div>
-                <div class="hand minute-hand" id="minute"></div>
-                <div class="hand second-hand" id="second"></div>
-                <div class="center-dot"></div>
-            </div>
-        </div>
-        <div class="timeir-calendar">
-            <div class="header">
-                <span id="jalaliMonthYear"></span>
-                <span id="miladiDate"></span>
-            </div>
-            <table id="calendarTable">
-                <thead><tr><th>ش</th><th>ی</th><th>د</th><th>س</th><th>چ</th><th>پ</th><th>ج</th></tr></thead>
-                <tbody id="calendarBody"></tbody>
-            </table>
-            <div class="events" id="eventsToday"></div>
-        </div>
-        <button id="get-fal" class="magic-btn-new">بگیر <span class="shine">ف</span>ال</button>
-        <div id="fal-result" class="card">
-            <div class="poem"></div>
-            <div class="taavil"></div>
-        </div>
+
+    <h1 class="title">فال حافظ شیرازی</h1>
+    <p class="subtitle">با نیت پاک در دل شب فال بگیرید</p>
+
+    <button id="get-fal">بگیر <span class="shine">ف</span>ال</button>
+
+    <div id="fal-result">
+        <div class="poem"></div>
+        <div class="taavil"></div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        // ستاره‌ها
+        for(let i=0;i<300;i++){
+            let s=document.createElement('div');s.className='star';
+            s.style.width=s.style.height=Math.random()*3+1+'px';
+            s.style.top=Math.random()*100+'%';s.style.left=Math.random()*100+'%';
+            s.style.animationDelay=Math.random()*5+'s';
+            document.getElementById('stars').appendChild(s);
+        }
+
+        // فال‌ها
+        const falha=[
+            {poem:"الا یا ایها الساقی ادر کأساً و ناولها\nکه عشق آسان نمود اول ولی افتاد مشکل‌ها",taavil:"عشق و آرزوهایت به زودی محقق می‌شود."},
+            {poem:"صبح است و ژاله می‌بارد به گلزار اقبال\nبخند ای نرگس مست که داری روز خوش",taavil:"روزگار خوشی در پیش داری."},
+            {poem:"دوش از مسجد سوی میخانه آمد پیر ما\nچه جای شگفت، زاهد او شد و ما شدیم می‌پرست",taavil:"تغییرات بزرگ و مثبت در راه است."},
+            {poem:"هر کسی را که عشق نیست دلش مرده است\nعشق دریایی است که به این راحتی کسی را غرق نمی‌کند",taavil:"عشق واقعی در راه است."},
+            {poem:"بیا که رونق این کارخانهٔ عشقباز است\nبه یاد شاه شجاع ما رندی و عشرت کنیم",taavil:"شادی و موفقیت در پیش است."}
+        ];
+
+        document.getElementById('get-fal').onclick=function(){
+            const f=falha[Math.floor(Math.random()*falha.length)];
+            const poem=document.querySelector('.poem');
+            const taavil=document.querySelector('.taavil');
+            const card=document.getElementById('fal-result');
+            poem.innerHTML=''; taavil.textContent=''; card.style.display='block';
+            let i=0;
+            const type=()=>{
+                if(i<f.poem.length){
+                    poem.innerHTML += f.poem[i]==='\n'n' ? '<br>' : f.poem[i];
+                    i++;
+                    setTimeout(type,80);
+                }else{
+                    taavil.textContent=f.taavil;
+                }
+            };
+            type();
+        };
+    </script>
 </body>
 </html>

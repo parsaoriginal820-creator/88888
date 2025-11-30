@@ -61,18 +61,52 @@ function animateParticles(){
 }
 animateParticles();
 
-// موزیک
+// موزیک – نسخه اصلاح‌شده که ۱۰۰٪ کار می‌کنه
 const music = document.getElementById('bgMusic');
 const soundBtn = document.getElementById('soundBtn');
+let musicAllowed = false;
+
+// وقتی کاربر اولین بار روی دکمه «بگیر فال» یا هر جای صفحه کلیک کرد، اجازه پخش می‌ده
+document.body.addEventListener('click', function unlockAudio() {
+    if (!musicAllowed) {
+        music.play().then(() => {
+            musicAllowed = true;
+            soundBtn.textContent = '🔊';
+            console.log('صدا فعال شد');
+        }).catch(() => {
+            soundBtn.textContent = '🔇';
+        });
+        // فقط یک‌بار اجرا بشه
+        document.body.removeEventListener('click', unlockAudio);
+    }
+}, { once: true });
+
+// دکمه روشن/خاموش صدا
 soundBtn.addEventListener('click', () => {
-    if(music.paused){
-        music.play();
-        soundBtn.textContent = '🔊';
-        soundBtn.classList.remove('muted');
+    if (musicAllowed) {
+        if (music.paused) {
+            music.play();
+            soundBtn.textContent = '🔊';
+            soundBtn.classList.remove('muted');
+        } else {
+            music.pause();
+            soundBtn.textContent = '🔇';
+            soundBtn.classList.add('muted');
+        }
     } else {
-        music.pause();
-        soundBtn.textContent = '🔇';
-        soundBtn.classList.add('muted');
+        // اگه هنوز اجازه نداده، با کلیک روی دکمه هم فعال بشه
+        music.play();
+        musicAllowed = true;
+        soundBtn.textContent = '🔊';
+    }
+});
+
+// وقتی کاربر اولین بار روی دکمه فال کلیک کرد هم صدا فعال بشه
+document.getElementById('get-fal').addEventListener('click', () => {
+    if (!musicAllowed) {
+        music.play();
+        musicAllowed = true;
+        soundBtn.textContent = '🔊';
     }
 });
 

@@ -1,158 +1,58 @@
 * { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-    font-family: 'Vazirmatn', sans-serif;
-    background: linear-gradient(135deg, #0b0c1f, #1a1a2e, #16213e);
-    color: #fff;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-}
-
-/* ابرها */
+body { font-family: 'Vazirmatn', sans-serif; background: linear-gradient(135deg, #0b0c1f, #1a1a2e, #16213e); color: #fff; min-height: 100vh; overflow-x: hidden; position: relative; }
 .clouds { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
 .cloud { position:absolute; background:rgba(255,255,255,0.07); border-radius:100px; filter:blur(10px); }
 .cloud1 { width:300px; height:100px; top:10%; left:-300px; animation:cloudMove 120s linear infinite; }
 .cloud2 { width:400px; height:120px; top:25%; left:-400px; animation:cloudMove 180s linear infinite; }
 .cloud3 { width:250px; height:80px; top:40%; left:-250px; animation:cloudMove 140s linear infinite; }
 @keyframes cloudMove { 0%{left:-400px} 100%{left:100%} }
-
-/* ماه کامل */
-.moon {
-    position:fixed; top:50px; right:50px; width:150px; height:150px;
-    background:radial-gradient(circle at 30% 30%, #fff, #f0f4f8);
-    border-radius:50%; box-shadow:0 0 120px #fff, 0 0 250px rgba(100,180,255,0.6); z-index:2;
-}
-
-/* ستاره‌های چشمک‌زن */
+.moon { position:fixed; top:50px; right:50px; width:150px; height:150px; background:radial-gradient(circle at 30% 30%, #fff, #f0f4f8); border-radius:50%; box-shadow:0 0 120px #fff, 0 0 250px rgba(100,180,255,0.6); z-index:2; }
 .stars { position:fixed; top:0; left:0; width:100%; height:100%; z-index:1; }
 .star { position:absolute; background:#fff; border-radius:50%; animation:twinkle 4s infinite alternate; }
 @keyframes twinkle { 0%{opacity:0.3} 100%{opacity:1} }
-
-/* ستاره دنباله‌دار */
-.shooting-star {
-    position:fixed; width:3px; height:100px; background:linear-gradient(transparent,#fff);
-    transform:rotate(-45deg); opacity:0; z-index:3; transition: all 4s linear;
-}
-.shooting-star::before {
-    content:''; position:absolute; top:0; width:50px; height:6px; background:#fff;
-    border-radius:50%; box-shadow:0 0 30px #fff;
-}
-
-/* اسم ماه در پس‌زمینه */
-.month-bg {
-    position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-15deg);
-    font-family:'Niconne',cursive; font-size:20vw; color:rgba(255,255,255,0.04);
-    pointer-events:none; z-index:1;
-}
-
-/* عنوان و زیرعنوان */
+.shooting-star { position:fixed; width:3px; height:100px; background:linear-gradient(transparent,#fff); transform:rotate(-45deg); opacity:0; z-index:3; }
+.shooting-star::before { content:''; position:absolute; top:0; width:50px; height:6px; background:#fff; border-radius:50%; box-shadow:0 0 30px #fff; }
+.month-bg { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-15deg); font-family:'Niconne',cursive; font-size:20vw; color:rgba(255,255,255,0.04); pointer-events:none; z-index:1; }
 .title { font-size:3.5rem; text-align:center; margin:30px 0 10px; font-family:'Niconne',cursive; color:#ffd700; text-shadow:0 0 20px #ffd700; }
 .subtitle { text-align:center; font-size:1.3rem; opacity:0.9; margin-bottom:30px; }
-
-/* ساعت دیواری با اعداد فارسی */
-.analog-clock {
-    width:320px; height:320px; border:20px solid rgba(255,255,255,0.15);
-    border-radius:50%; margin:40px auto; position:relative;
-    background:rgba(0,0,0,0.5); backdrop-filter:blur(15px);
-    box-shadow:0 0 100px rgba(0,0,0,0.8);
-}
-.numbers span {
-    position:absolute; top:50%; left:50%; font-size:28px; font-weight:bold;
-    color:#e0e7ff; text-shadow:0 0 15px #fff;
-    transform:translate(-50%,-50%);
-}
-.numbers span:nth-child(1)  { transform:translate(-50%,-50%) rotate(0deg)   translateY(-130px) rotate(0deg); }
-.numbers span:nth-child(2)  { transform:translate(-50%,-50%) rotate(30deg)  translateY(-130px) rotate(-30deg); }
-.numbers span:nth-child(3)  { transform:translate(-50%,-50%) rotate(60deg)  translateY(-130px) rotate(-60deg); }
-.numbers span:nth-child(4)  { transform:translate(-50%,-50%) rotate(90deg)  translateY(-130px) rotate(-90deg); }
-.numbers span:nth-child(5)  { transform:translate(-50%,-50%) rotate(120deg) translateY(-130px) rotate(-120deg); }
-.numbers span:nth-child(6)  { transform:translate(-50%,-50%) rotate(150deg) translateY(-130px) rotate(-150deg); }
-.numbers span:nth-child(7)  { transform:translate(-50%,-50%) rotate(180deg) translateY(-130px) rotate(-180deg); }
-.numbers span:nth-child(8)  { transform:translate(-50%,-50%) rotate(210deg) translateY(-130px) rotate(-210deg); }
-.numbers span:nth-child(9)  { transform:translate(-50%,-50%) rotate(240deg) translateY(-130px) rotate(-240deg); }
+.analog-clock { width:320px; height:320px; border:20px solid rgba(255,255,255,0.15); border-radius:50%; margin:40px auto; position:relative; background:rgba(0,0,0,0.5); backdrop-filter:blur(15px); box-shadow:0 0 100px rgba(0,0,0,0.8); }
+.numbers span { position:absolute; top:50%; left:50%; font-size:28px; font-weight:bold; color:#e0e7ff; text-shadow:0 0 15px #fff; transform:translate(-50%,-50%); }
+.numbers span:nth-child(1) { transform:translate(-50%,-50%) rotate(0deg) translateY(-130px) rotate(0deg); }
+.numbers span:nth-child(2) { transform:translate(-50%,-50%) rotate(30deg) translateY(-130px) rotate(-30deg); }
+.numbers span:nth-child(3) { transform:translate(-50%,-50%) rotate(60deg) translateY(-130px) rotate(-60deg); }
+.numbers span:nth-child(4) { transform:translate(-50%,-50%) rotate(90deg) translateY(-130px) rotate(-90deg); }
+.numbers span:nth-child(5) { transform:translate(-50%,-50%) rotate(120deg) translateY(-130px) rotate(-120deg); }
+.numbers span:nth-child(6) { transform:translate(-50%,-50%) rotate(150deg) translateY(-130px) rotate(-150deg); }
+.numbers span:nth-child(7) { transform:translate(-50%,-50%) rotate(180deg) translateY(-130px) rotate(-180deg); }
+.numbers span:nth-child(8) { transform:translate(-50%,-50%) rotate(210deg) translateY(-130px) rotate(-210deg); }
+.numbers span:nth-child(9) { transform:translate(-50%,-50%) rotate(240deg) translateY(-130px) rotate(-240deg); }
 .numbers span:nth-child(10) { transform:translate(-50%,-50%) rotate(270deg) translateY(-130px) rotate(-270deg); }
 .numbers span:nth-child(11) { transform:translate(-50%,-50%) rotate(300deg) translateY(-130px) rotate(-300deg); }
 .numbers span:nth-child(12) { transform:translate(-50%,-50%) rotate(330deg) translateY(-130px) rotate(-330deg); }
 .hand { position:absolute; bottom:50%; left:50%; transform-origin:bottom; }
-.hour-hand   { width:10px; height:90px; background:#ffd700; margin-left:-5px; border-radius:8px; }
+.hour-hand { width:10px; height:90px; background:#ffd700; margin-left:-5px; border-radius:8px; }
 .minute-hand { width:8px; height:120px; background:#fff; margin-left:-4px; border-radius:6px; }
 .second-hand { width:3px; height:130px; background:#ff6b6b; margin-left:-1.5px; }
 .center-dot { width:24px; height:24px; background:#ffd700; border:6px solid #222; border-radius:50%; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:10; }
-
-/* تقویم دقیق time.ir */
-.timeir-calendar {
-    background:#fff; color:#333; border-radius:20px; padding:20px;
-    max-width:480px; margin:40px auto; box-shadow:0 15px 40px rgba(0,0,0,0.4);
-}
+.timeir-calendar { background:#fff; color:#333; border-radius:20px; padding:20px; max-width:480px; margin:40px auto; box-shadow:0 15px 40px rgba(0,0,0,0.4); }
 .timeir-calendar .header { text-align:center; margin-bottom:20px; padding-bottom:12px; border-bottom:3px solid #8b4513; }
 #jalaliMonthYear { color:#8b4513; font-size:1.9rem; font-weight:bold; display:block; }
 #miladiDate { color:#555; font-size:1rem; margin-top:6px; }
 .timeir-calendar th { background:#8b4513; color:white; padding:12px 5px; font-weight:bold; font-size:0.95rem; }
 .timeir-calendar td { height:52px; text-align:center; font-size:1.15rem; border:1px solid #eee; transition:all 0.3s; }
 .timeir-calendar td:hover { background:#f5f5f5; }
-.timeir-calendar td.today {
-    background:#ff6b6b !important; color:white !important; font-weight:bold;
-    border-radius:50%; position:relative; animation:pulse 2s infinite;
-}
+.timeir-calendar td.today { background:#ff6b6b !important; color:white !important; font-weight:bold; border-radius:50%; position:relative; animation:pulse 2s infinite; }
 @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(255,107,107,0.7)} 70%{box-shadow:0 0 0 12px rgba(255,107,107,0)} 100%{box-shadow:0 0 0 0 rgba(255,107,107,0)} }
 .events { margin-top:18px; padding:14px; background:#f9f9f9; border-radius:10px; color:#444; text-align:center; font-size:1.05rem; }
-
-/* دکمه جدید "بگیر فال" — سیاه براق + نقطه ف درخشان */
-.magic-btn-new {
-    display:block; margin:50px auto; padding:22px 90px;
-    font-size:2.4rem; font-weight:bold;
-    background:#000; color:#fff;
-    border:4px solid #333;
-    border-radius:70px;
-    cursor:pointer;
-    box-shadow:0 0 50px rgba(0,0,0,0.9), inset 0 0 30px rgba(255,255,255,0.08);
-    position:relative; overflow:hidden;
-    transition:all 0.5s ease;
-}
-.magic-btn-new:hover {
-    transform:translateY(-10px) scale(1.05);
-    box-shadow:0 0 80px rgba(255,215,0,0.4), inset 0 0 40px rgba(255,255,255,0.15);
-    border-color:#ffd700;
-}
-.shine {
-    color:#ffd700;
-    text-shadow:0 0 20px #ffd700, 0 0 40px #ff6b6b, 0 0 60px #fff;
-    animation:starTwinkle 1.8s infinite alternate;
-}
-@keyframes starTwinkle {
-    0%   { text2086-shadow:0 0 15px #ffd700, 0 0 30px #ff6b6b; }
-    100% { text-shadow:0 0 35px #ffd700, 0 0 70px #ff6b6b, 0 0 100px #fff; }
-}
-
-/* کارت فال */
-.card {
-    background:rgba(255,255,255,0.12); padding:45px; border-radius:35px;
-    backdrop-filter:blur(22px); max-width:780px; margin:40px auto;
-    box-shadow:0 30px 70px rgba(0,0,0,0.6); opacity:0; transform:translateY(60px);
-    transition:all 1.4s cubic-bezier(0.25,0.8,0.25,1);
-}
+.magic-btn-new { display:block; margin:50px auto; padding:22px 90px; font-size:2.4rem; font-weight:bold; background:#000; color:#fff; border:4px solid #333; border-radius:70px; cursor:pointer; box-shadow:0 0 50px rgba(0,0,0,0.9), inset 0 0 30px rgba(255,255,255,0.08); position:relative; overflow:hidden; transition:all 0.5s ease; }
+.magic-btn-new:hover { transform:translateY(-10px) scale(1.05); box-shadow:0 0 80px rgba(255,215,0,0.4), inset 0 0 40px rgba(255,255,255,0.15); border-color:#ffd700; }
+.shine { color:#ffd700; text-shadow:0 0 20px #ffd700, 0 0 40px #ff6b6b, 0 0 60px #fff; animation:starTwinkle 1.8s infinite alternate; }
+@keyframes starTwinkle { 0%{text-shadow:0 0 15px #ffd700, 0 0 30px #ff6b6b;} 100%{text-shadow:0 0 35px #ffd700, 0 0 70px #ff6b6b, 0 0 100px #fff;} }
+.card { background:rgba(255,255,255,0.12); padding:45px; border-radius:35px; backdrop-filter:blur(22px); max-width:780px; margin:40px auto; box-shadow:0 30px 70px rgba(0,0,0,0.6); opacity:0; transform:translateY(60px); transition:all 1.4s cubic-bezier(0.25,0.8,0.25,1); }
 .card.show { opacity:1; transform:translateY(0); }
 .poem { font-size:2rem; line-height:3.8rem; margin-bottom:40px; direction:rtl; text-align:right; }
 .taavil { background:rgba(0,0,0,0.5); padding:35px; border-radius:28px; font-size:1.6rem; line-height:2.6rem; direction:rtl; text-align:right; }
-
-/* دکمه صدا */
-.sound-btn {
-    position:fixed; top:20px; left:20px; width:60px; height:60px;
-    background:rgba(255,255,255,0.15); border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer; backdrop-filter:blur(15px); font-size:28px; z-index:20;
-    transition:all 0.4s; box-shadow:0 5px 20px rgba(0,0,0,0.4);
-}
+.sound-btn { position:fixed; top:20px; left:20px; width:60px; height:60px; background:rgba(255,255,255,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; backdrop-filter:blur(15px); font-size:28px; z-index:20; transition:all 0.4s; box-shadow:0 5px 20px rgba(0,0,0,0.4); }
 .sound-btn:hover { transform:scale(1.2); background:rgba(255,255,255,0.3); }
-
-/* موبایل */
-@media (max-width:600px) {
-    .moon { width:100px; height:100px; top:20px; right:20px; }
-    .analog-clock { width:260px; height:260px; }
-    .numbers span { font-size:22px; }
-    .title { font-size:2.8rem; }
-    .magic-btn-new { font-size:1.9rem; padding:18px 60px; }
-    .timeir-calendar { padding:15px; }
-    .timeir-calendar td { height:42px; font-size:1rem; }
-}
+.container { position:relative; z-index:2; text-align:center; padding:20px; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+@media (max-width:600px) { .moon { width:100px; height:100px; top:20px; right:20px; } .analog-clock { width:260px; height:260px; } .numbers span { font-size:22px; } .title { font-size:2.8rem; } .magic-btn-new { font-size:1.9rem; padding:18px 60px; } .timeir-calendar { padding:15px; } .timeir-calendar td { height:42px; font-size:1rem; } }

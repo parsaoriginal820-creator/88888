@@ -9,32 +9,37 @@
 </head>
 <body>
 
+    <!-- ابرها -->
     <div class="clouds">
         <div class="cloud cloud1"></div>
         <div class="cloud cloud2"></div>
         <div class="cloud cloud3"></div>
     </div>
 
+    <!-- ماه -->
     <div class="moon"></div>
+
+    <!-- ستاره‌ها -->
     <div class="stars" id="stars"></div>
 
-    <div class="sound-btn" id="soundBtn">Speaker On</div>
-    <audio id="bgMusic" loop preload="auto">
+    <!-- دکمه صدا -->
+    <div class="sound-btn" id="soundBtn">🔊</div>
+    <audio id="bgMusic" loop>
         <source src="https://cdn.musicgitar.ir/Music/Nature/Rain/Rain%20Sounds~Guiatramusics.com%20-%20Rain%20Sounds%20-%20Spa.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- اسم ماه -->
     <div class="month-bg" id="monthName">آذر</div>
 
     <div class="container">
         <h1 class="title">فال حافظ شیرازی</h1>
         <p class="subtitle">با نیت پاک در دل شب فال بگیرید</p>
 
+        <!-- ساعت -->
         <div class="analog-clock">
             <div class="clock-face">
                 <div class="numbers">
-                    <span>۱۲</span><span>۱</span><span>۲</span><span>۳</span>
-                    <span>۴</span><span>۵</span><span>۶</span><span>۷</span>
-                    <span>۸</span><span>۹</span><span>۱۰</span><span>۱۱</span>
+                    <span>۱۲</span><span>۱</span><span>۲</span><span>۳</span><span>۴</span><span>۵</span><span>۶</span><span>۷</span><span>۸</span><span>۹</span><span>۱۰</span><span>۱۱</span>
                 </div>
                 <div class="hand hour-hand" id="hour"></div>
                 <div class="hand minute-hand" id="minute"></div>
@@ -43,24 +48,23 @@
             </div>
         </div>
 
+        <!-- تقویم -->
         <div class="timeir-calendar">
             <div class="header">
                 <span id="jalaliMonthYear"></span>
                 <span id="miladiDate"></span>
             </div>
             <table id="calendarTable">
-                <thead>
-                    <tr><th>ش</th><th>ی</th><th>د</th><th>س</th><th>چ</th><th>پ</th><th>ج</th></tr>
-                </thead>
+                <thead><tr><th>ش</th><th>ی</th><th>د</th><th>س</th><th>چ</th><th>پ</th><th>ج</th></tr></thead>
                 <tbody id="calendarBody"></tbody>
             </table>
             <div class="events" id="eventsToday"></div>
         </div>
 
-        <button id="get-fal" class="magic-btn-new">
-            <span>بگیر <span class="shine">ف</span>ال</span>
-        </button>
+        <!-- دکمه فال -->
+        <button id="get-fal" class="magic-btn-new">بگیر <span class="shine">ف</span>ال</button>
 
+        <!-- فال -->
         <div id="fal-result" class="card">
             <div class="poem"></div>
             <div class="taavil"></div>

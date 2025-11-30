@@ -116,47 +116,63 @@ document.getElementById('soundBtn').addEventListener('click', () => {
     }
 });
 
-// فال حافظ — ۱۰۰٪ کار می‌کند (حتی بدون DOMContentLoaded)
-const falha = [
-    { poem: "الا یا ایها الساقی ادر کأساً و ناولها\nکه عشق آسان نمود اول ولی افتاد مشکل‌ها", taavil: "عشق و آرزوهایت به زودی محقق می‌شود." },
-    { poem: "صبح است و ژاله می‌بارد به گلزار اقبال\nبخند ای نرگس مست که داری روز خوش", taavil: "روزگار خوشی در پیش داری." },
-    { poem: "دوش از مسجد سوی میخانه آمد پیر ما\nچه جای شگفت، زاهد او شد و ما شدیم می‌پرست", taavil: "تغییرات بزرگ و مثبت در راه است." },
-    { poem: "هر کسی را که عشق نیست دلش مرده است\nعشق دریایی است که به این راحتی کسی را غرق نمی‌کند", taavil: "عشق واقعی در راه است." },
-    { poem: "بیا که رونق این کارخانهٔ عشقباز است\nبه یاد شاه شجاع ما رندی و عشرت کنیم", taavil: "شادی و موفقیت در پیش است." },
-    { poem: "گر از دوست علاج دل طلبم عجبی نیست\nطبیب همه عالمم و دردم نهان دارم", taavil: "مشکلاتت به زودی حل می‌شود." }
-];
-
-// رویداد کلیک دکمه فال — مستقیم و بدون هیچ شرط
+// فال حافظ — ۱۰۰٪ کار می‌کند (IIFE برای اجرای فوری)
 (function() {
-    const btn = document.getElementById('get-fal');
-    const poemEl = document.querySelector('.poem');
-    const taavilEl = document.querySelector('.taavil');
-    const card = document.getElementById('fal-result');
+    const falha = [
+        { poem: "الا یا ایها الساقی ادر کأساً و ناولها\nکه عشق آسان نمود اول ولی افتاد مشکل‌ها", taavil: "عشق و آرزوهایت به زودی محقق می‌شود." },
+        { poem: "صبح است و ژاله می‌بارد به گلزار اقبال\nبخند ای نرگس مست که داری روز خوش", taavil: "روزگار خوشی در پیش داری." },
+        { poem: "دوش از مسجد سوی میخانه آمد پیر ما\nچه جای شگفت، زاهد او شد و ما شدیم می‌پرست", taavil: "تغییرات بزرگ و مثبت در راه است." },
+        { poem: "هر کسی را که عشق نیست دلش مرده است\nعشق دریایی است که به این راحتی کسی را غرق نمی‌کند", taavil: "عشق واقعی در راه است." },
+        { poem: "بیا که رونق این کارخانهٔ عشقباز است\nبه یاد شاه شجاع ما رندی و عشرت کنیم", taavil: "شادی و موفقیت در پیش است." },
+        { poem: "گر از دوست علاج دل طلبم عجبی نیست\nطبیب همه عالمم و دردم نهان دارم", taavil: "مشکلاتت به زودی حل می‌شود." }
+    ];
 
-    btn.addEventListener('click', function() {
-        console.log('دکمه فال کلیک شد!'); // برای تست در کنسول
-        const randomFal = falha[Math.floor(Math.random() * falha.length)];
+    // منتظر لود کامل DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFal);
+    } else {
+        initFal();
+    }
 
-        // ریست
-        card.style.display = 'none'; // یا classList.remove('show') اگر CSS داری
-        poemEl.innerHTML = '';
-        taavilEl.textContent = '';
+    function initFal() {
+        const btn = document.getElementById('get-fal');
+        const poemEl = document.querySelector('.poem');
+        const taavilEl = document.querySelector('.taavil');
+        const card = document.getElementById('fal-result');
 
-        // انیمیشن تایپ
-        setTimeout(() => {
-            let i = 0;
-            const text = randomFal.poem;
-            const typeWriter = () => {
-                if (i < text.length) {
-                    poemEl.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 80);
-                } else {
-                    taavilEl.textContent = randomFal.taavil;
-                    card.style.display = 'block'; // یا classList.add('show')
-                }
-            };
-            typeWriter();
-        }, 300);
-    });
-})(); // IIFE برای اجرای فوری
+        if (!btn || !poemEl || !taavilEl || !card) {
+            console.error('عناصر فال پیدا نشد!');
+            return;
+        }
+
+        btn.addEventListener('click', function() {
+            console.log('دکمه فال کلیک شد!'); // برای تست
+            const randomFal = falha[Math.floor(Math.random() * falha.length)];
+
+            // ریست
+            card.classList.remove('show');
+            poemEl.innerHTML = '';
+            taavilEl.textContent = '';
+
+            // انیمیشن تایپ
+            setTimeout(() => {
+                poemEl.className = 'poem typing';
+                let i = 0;
+                const text = randomFal.poem;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        poemEl.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 80);
+                    } else {
+                        taavilEl.textContent = randomFal.taavil;
+                        card.classList.add('show');
+                    }
+                };
+                typeWriter();
+            }, 300);
+        });
+
+        console.log('فال حافظ آماده شد!');
+    }
+})();

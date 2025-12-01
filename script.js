@@ -53,4 +53,34 @@ document.getElementById('calendarBody').innerHTML=html;
 const falha=[
     {poem:"الا یا ایها الساقی ادر کأساً و ناولها\nکه عشق آسان نمود اول ولی افتاد مشکل‌ها",taavil:"عشق و آرزوهایت به زودی محقق می‌شود"},
     {poem:"صبح است و ژاله می‌بارد به گلزار اقبال\nبخند ای نرگس مست که داری روز خوش",taavil:"روزگار خوشی در پیش داری"},
-    {poem:"دوش از مسجد سوی میخانه آمد پیر ما\nچه جای شگفت زاهد او شد و ما شدیم می‌پرست",taavil:"ت
+    {poem:"دوش از مسجد سوی میخانه آمد پیر ما\nچه جای شگفت زاهد او شد و ما شدیم می‌پرست",taavil:"تغییرات بزرگ و مثبت در راه است"},
+    {poem:"هر کسی را که عشق نیست دلش مرده است\nعشق دریایی است که به این راحتی کسی را غرق نمی‌کند",taavil:"عشق واقعی در راه است"},
+    {poem:"بیا که رونق این کارخانهٔ عشقباز است\nبه یاد شاه شجاع ما رندی و عشرت کنیم",taavil:"شادی و موفقیت در پیش است"}
+];
+
+document.getElementById('get-fal').onclick = function(){
+    const f = falha[Math.floor(Math.random() * falha.length)];
+    const poem = document.querySelector('.poem');
+    const taavil = document.querySelector('.taavil');
+    const card = document.getElementById('fal-result');
+
+    poem.innerHTML = '';
+    taavil.textContent = '';
+    card.style.display = 'none';
+
+    setTimeout(() => {
+        card.style.display = 'block';
+    }, 100);
+
+    let i = 0;
+    function type(){
+        if(i < f.poem.length){
+            poem.innerHTML += f.poem[i] === '\n' ? '<br>' : f.poem[i];
+            i++;
+            setTimeout(type, 80);
+        } else {
+            taavil.textContent = f.taavil;
+        }
+    }
+    type();
+};
